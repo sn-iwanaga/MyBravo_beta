@@ -1,0 +1,7 @@
+<h1>Delete Reward</h1>
+<p>Are you sure you want to delete "{{ reward.reward_name }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+    <a href="{% url 'reward_list' %}">Cancel</a>
+</form>

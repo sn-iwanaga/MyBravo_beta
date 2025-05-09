@@ -1,1 +1,45 @@
-<h1>my page</h1>
+<h1>My Page</h1>
+<p>{{ points }} Points</p>
+
+<h2>Actions</h2>
+<ul>
+    {% for action in actions %}
+        <li>
+            {{ action.action_name }} - {{ action.points }} points
+            <form method="post" action="{% url 'record_action' action.pk %}">
+                {% csrf_token %}
+                <button type="submit">Record</button>
+            </form>
+        </li>
+    {% endfor %}
+</ul>
+
+<h2>Rewards</h2>
+<ul>
+    {% for reward in rewards %}
+        <li>
+            {{ reward.reward_name }} - {{ reward.required_points }} points
+            <form method="post" action="{% url 'exchange_reward' reward.pk %}">
+                {% csrf_token %}
+                <button type="submit">Exchange</button>
+            </form>
+        </li>
+    {% endfor %}
+</ul>
+
+<h2>Histories</h2>
+<ul>
+    {% for history in histories %}
+        <li>
+            {% if history.action %}
+                {{ history.action.action_name }} - +{{ history.point_change }} points - {{ history.date }}
+            {% elif history.reward %}
+                {{ history.reward.reward_name }} - -{{ history.point_change }} points - {{ history.date }}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'action_list' %}">Manage Actions</a> |
+<a href="{% url 'reward_list' %}">Manage Rewards</a> |
+<a href="{% url 'signout' %}">Sign Out</a>

@@ -2,15 +2,28 @@
 
 {% block content %}
   <h1>History</h1>
-  <ul>
-    {% for history in histories %}
-      <li>
-        {% if history.action %}
-          {{ history.action.action_name }}　+{{ history.point_change }} points - {{ history.date }}
-        {% elif history.reward %}
-          {{ history.reward.reward_name }}　{{ history.point_change }} points - {{ history.date }}
-        {% endif %}
-      </li>
-    {% endfor %}
-  </ul>
+  <table>
+    <thead>
+      <tr>
+        <th>Action/Reward</th>
+        <th>Point Change</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for history in histories %}
+        <tr>
+          <td>
+            {% if history.action %}
+              {{ history.action.action_name }}
+            {% elif history.reward %}
+              {{ history.reward.reward_name }}
+            {% endif %}
+          </td>
+          <td>{{ history.point_change }} points</td>
+          <td>{{ history.date }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 {% endblock %}

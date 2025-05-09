@@ -103,3 +103,33 @@ footer {
     font-size: small;
     color: #777;
 }
+
+/* テーブルのスタイル */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px; /* テーブルの下に余白を追加 */
+    margin-top: 20px;    /* テーブルの上に余白を追加 */
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    background-color: #f0f0f0;
+}
+
+
+td:first-child {
+    width: 40%;
+}
+
+
+
+td:last-child {
+    width: 20%;
+    text-align: center;
+}

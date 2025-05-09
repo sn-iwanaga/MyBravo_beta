@@ -1,34 +1,43 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>My Page</h1>
-  <p>{{ points }} Points</p>
+  <h1>{{ points }} Points</h1>
 
   <h2>Actions</h2>
-  <ul>
-    {% for action in actions %}
-      <li>
-        <span>{{ action.action_name }} - {{ action.points }} points</span>
-        <form method="post" action="{% url 'record_action' action.pk %}">
-          {% csrf_token %}
-          <button type="submit">Record</button>
-        </form>
-      </li>
-    {% endfor %}
-  </ul>
+  <table>
+    <tbody>
+      {% for action in actions %}
+        <tr>
+          <td>{{ action.action_name }}</td>
+          <td>{{ action.points }} points</td>
+          <td>
+            <form method="post" action="{% url 'record_action' action.pk %}">
+              {% csrf_token %}
+              <button type="submit">Record</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 
   <h2>Rewards</h2>
-  <ul>
-    {% for reward in rewards %}
-      <li>
-        <span>{{ reward.reward_name }} - {{ reward.required_points }} points</span>
-        <form method="post" action="{% url 'exchange_reward' reward.pk %}">
-          {% csrf_token %}
-          <button type="submit">Exchange</button>
-        </form>
-      </li>
-    {% endfor %}
-  </ul>
+  <table>
+    <tbody>
+      {% for reward in rewards %}
+        <tr>
+          <td>{{ reward.reward_name }}</td>
+          <td>{{ reward.required_points }} points</td>
+          <td>
+            <form method="post" action="{% url 'exchange_reward' reward.pk %}">
+              {% csrf_token %}
+              <button type="submit">Exchange</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 
   <h2>Monthly Point Chart</h2>
   <p>グラフは後ほど実装します。</p>

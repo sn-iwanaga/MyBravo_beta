@@ -4,19 +4,24 @@
   <h1>Action List</h1>
   <a href="{% url 'action_create' %}">Create New Action</a>
 
-  <ul>
-    {% for action in actions %}
-      <li>
-        {{ action.action_name }} - {{ action.points }}
-        <div>
-          <a href="{% url 'action_update' action.pk %}">Edit</a>
-          <a href="{% url 'action_delete' action.pk %}">Delete</a>
-        </div>
-      </li>
-    {% empty %}
-      <li>アクションはまだありません。</li>
-    {% endfor %}
-  </ul>
+  <table>
+    <tbody>
+      {% for action in actions %}
+        <tr>
+          <td>{{ action.action_name }}</td>
+          <td>{{ action.points }}</td>
+          <td>
+            <a href="{% url 'action_update' action.pk %}">Edit</a>
+            <a href="{% url 'action_delete' action.pk %}">Delete</a>
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="3">アクションはまだありません。</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 
   <a href="{% url 'mypage' %}">My Page</a>
 {% endblock %}

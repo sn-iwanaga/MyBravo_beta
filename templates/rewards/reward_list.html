@@ -1,12 +1,18 @@
-<h1>Reward List</h1>
-<a href="{% url 'reward_create' %}">Create New Reward</a>
-<ul>
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Reward List</h1>
+  <a href="{% url 'reward_create' %}">Create New Reward</a>
+  <ul>
     {% for reward in rewards %}
-        <li>
-            {{ reward.reward_name }} - {{ reward.required_points }}
-            <a href="{% url 'reward_update' reward.pk %}">Update</a>
-            <a href="{% url 'reward_delete' reward.pk %}">Delete</a>
-        </li>
+      <li>
+        {{ reward.reward_name }} - {{ reward.required_points }}
+        <div>
+            <a href="{% url 'reward_update' reward.pk %}">Edit</a>
+            <a href="{% url 'reward_delete' reward.pk %}">Delete</a>    
+        </div>
+      </li>
     {% endfor %}
-</ul>
-<a href="{% url 'mypage' %}">mypage</a>
+  </ul>
+  <a href="{% url 'mypage' %}">My Page</a>
+{% endblock %}

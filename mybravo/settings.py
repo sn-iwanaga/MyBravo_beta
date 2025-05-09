@@ -133,3 +133,9 @@ AUTH_USER_MODEL = 'accounts.CustomUser' # カスタムユーザモデルを指�
 
 LOGIN_REDIRECT_URL = 'mypage' # ログイン後のリダイレクト先
 LOGOUT_REDIRECT_URL = 'home' # ログアウト後のリダイレクト先
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]

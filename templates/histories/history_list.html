@@ -6,9 +6,9 @@
     {% for history in histories %}
       <li>
         {% if history.action %}
-          {{ history.action.action_name }} - +{{ history.point_change }} points - {{ history.date }}
+          {{ history.action.action_name }}　+{{ history.point_change }} points - {{ history.date }}
         {% elif history.reward %}
-          {{ history.reward.reward_name }} - -{{ history.point_change }} points - {{ history.date }}
+          {{ history.reward.reward_name }}　{{ history.point_change }} points - {{ history.date }}
         {% endif %}
       </li>
     {% endfor %}

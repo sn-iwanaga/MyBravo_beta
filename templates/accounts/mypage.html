@@ -8,7 +8,7 @@
   <ul>
     {% for action in actions %}
       <li>
-        {{ action.action_name }} - {{ action.points }} points
+        <span>{{ action.action_name }} - {{ action.points }} points</span>
         <form method="post" action="{% url 'record_action' action.pk %}">
           {% csrf_token %}
           <button type="submit">Record</button>
@@ -21,7 +21,7 @@
   <ul>
     {% for reward in rewards %}
       <li>
-        {{ reward.reward_name }} - {{ reward.required_points }} points
+        <span>{{ reward.reward_name }} - {{ reward.required_points }} points</span>
         <form method="post" action="{% url 'exchange_reward' reward.pk %}">
           {% csrf_token %}
           <button type="submit">Exchange</button>

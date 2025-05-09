@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>{{ points }} Points</h1>
+  <h1>{{ total_points }} Points</h1>
 
   <h2>Actions</h2>
   <table>
@@ -39,7 +39,38 @@
     </tbody>
   </table>
 
-  <h2>Monthly Point Chart</h2>
-  <p>グラフは後ほど実装します。</p>
+  <h2>Weekly Point Chart</h2>
+  <canvas id="myChart" width="400" height="200"></canvas>
+
+  <script>
+    const dailyPoints = {{ daily_points|safe }};
+    const labels = dailyPoints.map(item => item.date);
+    const data = dailyPoints.map(item => item.points);
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          data: data,
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        },
+        plugins: {
+          legend: {
+            display: false  // ラベルを非表示にする
+          }
+        }
+      }
+    });
+  </script>
 
 {% endblock %}

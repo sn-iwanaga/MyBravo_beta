@@ -1,3 +1,8 @@
-<h1>My Bravo!!</h1>
-<a href="{% url 'signup' %}">Sign Up</a>
-<a href="{% url 'signin' %}">Sign In</a>
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>My Bravo!!</h1>
+  <p>Welcome to My Bravo!!</p>
+  <a href="{% url 'signup' %}">Sign Up</a>
+  <a href="{% url 'signin' %}">Sign In</a>
+{% endblock %}

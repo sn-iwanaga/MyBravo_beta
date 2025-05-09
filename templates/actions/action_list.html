@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>アクション一覧</h1>
+  <a href="{% url 'action_create' %}">アクションの追加</a>
+
+  <ul>
+    {% for action in actions %}
+      <li>
+        {{ action.action_name }} - {{ action.points }}
+        <a href="{% url 'action_update' action.pk %}">編集</a>
+        <a href="{% url 'action_delete' action.pk %}">削除</a>
+      </li>
+    {% empty %}
+      <li>アクションはまだありません。</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>アクションの削除</h1>
+  <p>本当に削除しますか？</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">削除</button>
+  </form>
+  <a href="{% url 'action_list' %}">戻る</a>
+{% endblock %}

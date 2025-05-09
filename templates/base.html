@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Actions</title>
+  <title>My Bravo!!</title>
 </head>
 <body>
   <header>
-    <!-- ヘッダーコンテンツ -->
+    <nav>
+      {% if user.is_authenticated %}
+        <a href="{% url 'mypage' %}">My Page</a> |
+        <a href="{% url 'action_list' %}">Action Settings</a> |
+        <a href="{% url 'reward_list' %}">Reward Settings</a> |
+        <a href="{% url 'history_list' %}">History</a> |
+        <a href="{% url 'signout' %}">Sign Out</a>
+      {% else %}
+        <a href="{% url 'signin' %}">Sign In</a> |
+        <a href="{% url 'signup' %}">Sign Up</a>
+      {% endif %}
+    </nav>
   </header>
 
   <main>
@@ -15,7 +26,6 @@
   </main>
 
   <footer>
-    <!-- フッターコンテンツ -->
   </footer>
 </body>
 </html>

@@ -57,3 +57,8 @@ def exchange_reward(request, reward_pk):
 
     messages.success(request, f"{reward.reward_name}と交換しました。{reward.required_points}ポイント消費。")
     return redirect('mypage')
+
+@login_required
+def history_list(request):
+    histories = History.objects.filter(user=request.user).order_by('-created_at')
+    return render(request, 'histories/history_list.html', {'histories': histories})

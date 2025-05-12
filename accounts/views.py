@@ -43,13 +43,10 @@ def mypage(request):
     rewards = Reward.objects.filter(user=request.user)
     total_points = request.user.point
 
-    # ユーザーの利用開始日を取得 (例: User モデルに created_at フィールドがある場合)
-    user_start_date = request.user.date_joined.date()  # Userモデルにdate_joinedがある場合
+    user_start_date = request.user.date_joined.date()  
 
-    # 今日を終了日に設定
     end_date = date.today()
 
-    # 表示範囲の開始日を計算 (7日前)
     start_date = end_date - timedelta(days=6)
 
     # 利用開始日が7日前より前の場合、開始日を利用開始日に合わせる
@@ -79,13 +76,13 @@ def mypage(request):
             user=request.user,
             date=current_date,
             action__isnull=False  # アクションのみを対象とする
-        ).aggregate(Sum('point_change'))['point_change__sum'] or 0  # Noneの場合に0を返す
+        ).aggregate(Sum('point_change'))['point_change__sum'] or 0  
 
-        cumulative_points += total_points_that_day  # 累計ポイントを加算
+        cumulative_points += total_points_that_day 
 
         daily_points.append({
             'date': current_date.strftime('%Y-%m-%d'),
-            'points': cumulative_points,  # 累計ポイントを記録
+            'points': cumulative_points,
         })
 
         current_date += timedelta(days=1)
@@ -97,7 +94,7 @@ def mypage(request):
         'actions': actions,
         'rewards': rewards,
         'total_points': total_points,
-        'daily_points': daily_points_json,  # グラフ用データを渡す
+        'daily_points': daily_points_json,
     })
 
 def signup(request):

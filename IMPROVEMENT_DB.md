@@ -1,4 +1,4 @@
-# HISTORY: 複合キーを使用する＋削除ではなく無効化
+# HISTORY: NULLの削除＋削除ではなく無効化 or on_deleteで削除されたことを明記
 
 ## 現在の設計
 
@@ -104,3 +104,7 @@ erDiagram
 ### 変更することによるメリット
 *  actionやrewardを削除（無効化）してもHISTORYテーブルでそれを参照できる
 *  NULLが消えるため美しい
+
+### その他
+Deleteではなくなってしまうため、CRUDからは外れてしまう
+on_deleteで`削除されたAction/Reward`などのデフォルト値を設定する方が適切？

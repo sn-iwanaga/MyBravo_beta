@@ -79,12 +79,12 @@ WSGI_APPLICATION = 'mybravo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',  # PostgreSQLを使用
-        'NAME': 'mybravo_db2',  # データベース名
-        'USER': 'postgres',  # データベースユーザ名
-        'PASSWORD': 'postgres1995',  # データベースパスワード
-        'HOST': 'localhost',  # ホスト名
-        'PORT': '5432',  # ポート番号
+        'ENGINE': '',  # PostgreSQLを使用
+        'NAME': '',  # データベース名
+        'USER': '',  # データベースユーザ名
+        'PASSWORD': '',  # データベースパスワード
+        'HOST': '',  # ホスト名
+        'PORT': '',  # ポート番号
     }
 }
 

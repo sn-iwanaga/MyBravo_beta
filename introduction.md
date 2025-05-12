@@ -51,7 +51,7 @@
 
 1.  **データベースの設定:**
     *   PostgreSQLサーバーを起動し、MyBravo用のデータベースとユーザーを作成してください。
-    *   `settings.py` ファイルで、`DATABASES` の `ENGINE` を `'django.db.backends.postgresql'` に設定し、`NAME`, `USER`, `PASSWORD`, `HOST`, `PORT` を作成したデータベースに合わせて変更してください。
+    *   その後`settings.py` ファイルで、`DATABASES` の `ENGINE` を `'django.db.backends.postgresql_psycopg2'` に設定し、`NAME`, `USER`, `PASSWORD`, `HOST`, `PORT` を作成したデータベースに合わせて変更してください。
 
 2.  **マイグレーションの実行:**
 
